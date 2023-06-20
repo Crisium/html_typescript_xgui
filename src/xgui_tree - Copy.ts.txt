@@ -1,0 +1,145 @@
+import xUtilGuid from "./xutil_guid.js";
+
+export interface IGuiTreeParams{
+	selector: 		JQuery;
+	on_selected?: 	(node:IGuiTreeNode)=>void;
+}
+
+export interface IGuiTreeNode{
+	id?: string;
+	content?: string;
+	parent?: IGuiTreeNode,
+	children?: IGuiTreeNode[],
+	data?: any
+}
+
+export default class xGuiTree{
+
+	private _tree: JQuery;
+	private _on_selected: (node:IGuiTreeNode)=>void;
+
+	private _root: IGuiTreeNode;
+
+	private _map: Map<string, IGuiTreeNode> = new Map<string, IGuiTreeNode>();
+
+	constructor( params: IGuiTreeParams ){
+		this._tree = params.selector;
+		this._on_selected = params.on_selected;
+	}
+
+	getNode(id:string) : IGuiTreeNode{
+		return this._map.get(id);
+	}
+
+	addChild( parent_node: IGuiTreeNode, child_node: IGuiTreeNode ){
+		parent_node.children.push(child_node);
+		let jn = $(`#${parent_node.id}`).find(".node-content").first();
+
+		this.createExpander($(`#${parent_node.id}`));
+
+		this.build( child_node, jn );
+	}
+
+	clear(){
+		this._tree.empty();
+	}
+
+	setRoot( root: IGuiTreeNode ){
+		this.clear();
+
+		// build html code here
+		this.build( root, this._tree );
+	}
+
+	private _selected: IGuiTreeNode[] = [];
+
+	onMouseDownValue(event){
+		let target = $(event.currentTarget);
+
+		// return if already selected
+		if (target.hasClass("tree-value-selected")){
+			return;
+		}
+
+		target.closest("div[xgui-type=tree]").find("div[xgui-type=tree-value]").removeClass("tree-value-selected");
+		target.toggleClass("tree-value-selected");
+
+		let node:JQuery = target.closest("div[xgui-type=tree-node]");
+		let id:string = node.attr("id");
+		this._selected = []; // later we will support multi-selected
+		this._selected.push(this._map.get(id));
+
+		if (this._on_selected){
+			this._on_selected(this._selected[0]);
+		}
+	}
+
+	private createExpander( jtreenode: JQuery ){
+
+		let expander = jtreenode.find(".expander-symbol").first();
+
+		// we leave if we already have an expander
+		if ( expander.hasClass("expander-symbol-down") || expander.hasClass("expander-symbol-right")){
+			return;
+		}
+
+		expander.empty();
+		expander.append("&#9660;");	// down arrow
+		expander.addClass("expander-symbol-down");
+
+		expander.on("click", (event)=>{
+			let target = $(event.currentTarget);
+			target.toggleClass("expander-symbol-down");
+			target.toggleClass("expander-symbol-right");
+			target.text( target.text()==String.fromCharCode(9660)?String.fromCharCode(9654):String.fromCharCode(9660) );
+			target.siblings(".node-content").children(`div[xgui-type=tree-node]`).toggle();
+		});
+	}
+
+	private build( n: IGuiTreeNode, jn: JQuery ){
+
+		let content:string = n.content;
+
+		let jvalue = $(`<div xgui-type="tree-value">${content}</div>`);
+
+		jvalue.on("mousedown", (event)=>{
+			this.onMouseDownValue(event);
+		});
+
+
+		let jcontent = $(`<div class="node-content"></div>`);
+		jcontent.append(jvalue);
+
+		// create a unique id and save it in a lookup map coorisponding to the node
+		let id:string = n.id==undefined ? xUtilGuid.get() : n.id;
+		this._map.set(id, n);
+
+		let jtreenode = $(`<div id="${id}" xgui-type="tree-node"></div>`);
+
+		//////////////////////////
+		// expander
+		//////////////////////////
+
+		let expander = $(`<span class="expander-symbol"></span>`); 
+		jtreenode.append(expander);
+
+		if (n.children.length){
+			this.createExpander( jtreenode );
+		}
+
+		jtreenode.append(jcontent);
+		jn.append(jtreenode);
+
+		n.children.forEach( child => this.build( child, jcontent) );
+	}
+
+	selected() : IGuiTreeNode{
+
+		if (this._selected.length==0){
+			return undefined;
+		}
+
+		return this._selected[0];
+	}	
+
+}

@@ -1,0 +1,19 @@
+#panel-projects{
+	display: grid;
+	grid-template-rows: fit-content(0) auto;
+	height: 100%;
+}
+
+#panel-projects > div[xgui-type=toolbar]{
+	/* background-color:yellow; */
+}
+
+#project-list-view-container{
+	/* background-color:red; */
+	overflow-y: scroll;
+	padding-bottom: 20px;	/* I know this is wrong, but I cannot find a way to solve the bottom part and the toolbar conflicting in height */
+}
+
+#project-list-view > div[selected=selected]{
+	background-color: var(--focus-color);
+}

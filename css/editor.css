@@ -1,0 +1,32 @@
+::-webkit-scrollbar {
+	display: none;
+}
+
+:root {
+	
+	--focus-color: #3a79bb;
+	--forground-color: #3c3c3c;
+	--background-light-color: #383838;
+	--background-color: #282828;
+	--background-dark-color: #191919;
+	--text-color: #c4c4c4;
+	--text-size: 12px;
+	--text-readonly: #4e4e4e; 
+	--header-color: #3e3e3e;
+	--expander-color: #686868;
+	--background-input-color: #2a2a2a;
+	--border-input-dark-color: #1a1a1a;
+	--button-selected: #6a6a6a;
+  }
+
+html, body {
+	font-family: atlas, sans-serif;
+	font-size: 12px;
+	padding: 0px;
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	background-color: var(--background-dark-color);
+	box-sizing: border-box;
+	color: var(--text-color);
+}

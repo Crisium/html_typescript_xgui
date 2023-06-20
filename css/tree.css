@@ -1,0 +1,43 @@
+div[xgui-type=tree-node]{
+	display: flex;
+}
+
+.node-content{
+	display: block;
+	padding-left: 4px;
+	flex: 1;
+}
+
+.tree-node{
+	margin-left: 10px;
+}
+
+.node-expander{
+	width: 10px;
+}
+
+.expander-symbol{
+	user-select: none;
+	cursor: pointer;
+	color:  var(--expander-color);
+	width: 10px;
+	box-sizing: border-box;
+}
+
+.expander-symbol-right{
+	padding-left: 2px;	/* the padding here makes the symbol switch to down and it looks like it is centered */
+}
+
+.expander-symbol-down{
+	padding-right: 0px;
+}
+
+
+div[xgui-type=tree-value]{
+	user-select: none;
+	cursor: pointer;
+}
+
+.tree-value-selected{
+	background-color: #2c5d87;
+}

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>xGui Demo</title>
+
+	<!-- xgui css -->
+	<link rel="stylesheet" href="css/listview.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/dialog.css" />
+	<link rel="stylesheet" href="css/menu.css" />
+	<link rel="stylesheet" href="css/hierarchy.css" />
+	<link rel="stylesheet" href="css/view.css" />
+	<link rel="stylesheet" href="css/main_toolbar.css" />
+	<link rel="stylesheet" href="css/toolbar.css" />
+	<link rel="stylesheet" href="css/resizers.css" />
+	<link rel="stylesheet" href="css/properties.css" />
+	<link rel="stylesheet" href="css/tree.css" />
+	<link rel="stylesheet" href="css/tabs.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+
+	<!-- these are not directly xgui css stuff -->
+	<link rel="stylesheet" href="css/editor.css" />
+	<link rel="stylesheet" href="css/projects.css" />
+	<link rel="stylesheet" href="css/unittests.css" />
+	<link rel="stylesheet" href="css/scenes.css" />
+	<link rel="stylesheet" href="css/console.css" />
+
+	<link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "./node_modules/three/build/three.module.js",
+				"jquery": "./node_modules/jquery/dist/jquery.min.js"
+			}
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="module" src="dist/app.js" defer></script>
+</head>
+<body>
+
+	<template id="template-property-header">
+		<div class="property-header">
+			<div class="property-expander">&#9660</div>
+			<div class="property-icon"></div>
+			<div class="property-enable"></div>
+			<div class="property-title"></div>
+			<div class="property-kebab-menu">
+				<div xgui-type="push-button-group">
+					<div xgui-type="toolbar-button" xgui-type="toolbar-button">&nbsp;⠇</div>
+				</div>
+				<div style="position:relative;">
+					<nav class="property-menu" style="display:none;position:absolute;top:0;right:0;">
+						<ul class="nav">
+							<li><a class="property-menu-remove-component" href="#">Remove&nbsp;Component</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<div id="container">
+		<div id="container_top">
+			<div id="main-toolbar">
+
+				<div xgui-type="toolbar">
+					<div xgui-type="push-button-group">
+						<div id="save-all" xgui-type="toolbar-button"><img src="images/icons/disk.svg" alt=""/></div>
+					</div>
+				</div>
+
+				<div xgui-type="toolbar">
+					<div xgui-type="radio-button-group">
+						<div id="media-play" xgui-type="toolbar-button"><img src="images/icons/play.svg" alt=""/></div>
+						<div id="media-stop" selected xgui-type="toolbar-button"><img src="images/icons/stop3.svg" alt=""/></div>
+						<div id="media-pause" xgui-type="toolbar-button"><img src="images/icons/pause2.svg" alt=""/></div>
+					</div>
+				</div>
+
+				<div xgui-type="toolbar">
+					<div xgui-type="push-button-group">
+						<div id="editor-settings" xgui-type="toolbar-button"><img src="images/icons/gear.svg" alt=""/></div>
+					</div>
+				</div>
+	
+			</div>
+		</div>
+
+		<!-- ********************************* -->
+		<!-- ** Bottom		 				** -->
+		<!-- ********************************* -->
+
+		<!-- height: 200px -->
+		<div id="container_bottom" resizer="top">		
+			
+			<div id="container-flex-bottom">
+				<!-- height: 30px -->
+				<div id="test-toolbar" xgui-type="tabs">
+					<div><img src="images/icons/folder.svg" alt=""/><a href="#panel-projects">Projects</a></div>
+					<div><img src="images/icons/scene.svg" alt=""/><a href="#panel-scenes">Scenes</a></div>
+					<div><img src="images/icons/textures.svg" alt=""/><a href="#panel-textures">Textures</a></div>
+					<div selected><img src="images/icons/log.svg" alt=""/><a href="#panel-console">Console</a></div>
+				</div>
+		
+				<div id="panel-projects">
+					<div xgui-type="toolbar" class="toolbar" style="flex: 1;">
+						<div>
+							<input id="new-project-name" type="text"/>
+							<div xgui-type="push-button-group">
+								<div id="projects-new" xgui-type="toolbar-button"><img src="images/icons/plus.svg" alt=""/></div>
+								<div id="projects-delete" xgui-type="toolbar-button"><img src="images/icons/trashcan3.svg" alt=""/></div>
+							</div>
+						</div>
+						<div>
+							<div xgui-type="radio-button-group" style="justify-content: right;">
+								<div id="project-view-grid-large"  xgui-type="toolbar-button"><img src="images/icons/grid_large.svg" alt=""/></div>
+								<div id="project-view-grid" xgui-type="toolbar-button"><img src="images/icons/grid_medium.svg" alt=""/></div>
+								<div id="project-view-list" selected xgui-type="toolbar-button"><img src="images/icons/list.svg" alt=""/></div>
+							</div>
+						</div>
+					</div>
+					<div id="project-list-view-container">
+						<div id="project-list-view" xgui-type="list-view" class="view-list">
+							
+						</div>
+					</div>
+				</div>
+
+				<div id="panel-scenes" class="panel">
+					<div xgui-type="toolbar" class="toolbar">
+						<div>
+							<input id="new-scene-name" type="text"/>
+							<div xgui-type="push-button-group">
+								<div id="scenes-new" xgui-type="toolbar-button"><img src="images/icons/plus.svg" alt=""/></div>
+								<div id="properties-collapse345" xgui-type="toolbar-button"><img src="images/icons/trashcan3.svg" alt=""/></div>
+							</div>
+						</div>
+						<div>
+							<div xgui-type="radio-button-group" style="justify-content: right;">
+								<div selected xgui-type="toolbar-button"><img src="images/icons/grid_large.svg" alt=""/></div>
+								<div xgui-type="toolbar-button"><img src="images/icons/grid_medium.svg" alt=""/></div>
+								<div xgui-type="toolbar-button"><img src="images/icons/list.svg" alt=""/></div>
+							</div>
+						</div>
+					</div>
+					<div id="scene-list-view-container">
+						<div id="scene-list-view" xgui-type="list-view" class="view-list">
+						</div>
+					</div>
+				</div>
+
+				<div id="panel-textures" class="panel">
+
+				</div>
+
+				<!-- height: 170px -->
+				<div id="panel-console">
+					<div id="panel-console-container">
+						<div id="console-output">
+							<!-- <div>one</div>
+							<div>Two</div>
+							<div>Three</div>
+							<div>one</div>
+							<div>Two</div>
+							<div>Three</div>
+							<div>one</div>
+							<div>Two</div>
+							<div>Three</div>
+							<div>one</div>
+							<div>Two</div>
+							<div>Three</div>					
+							<div>one</div>
+							<div>Two</div>
+							<div>Three</div>
+							<div>one</div>
+							<div>Two</div>
+							<div>Three</div>
+							<div>one</div>
+							<div>Two</div>
+							<div>Three</div> -->
+						</div>
+						<div id="console-input" class="flexh">
+							<div id="console-path"></div>
+							<div id="console-input-symbol">
+								<img src="images/icons/greaterthan.svg" alt="" style="width: 12px;height: 12px;">
+							</div>
+							<input id="console-command" type="text"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<!-- ********************************* -->
+		<!-- ** Left		 				** -->
+		<!-- ********************************* -->
+
+		<div id="container_left" resizer="right">
+
+			<div xgui-type="tabs">
+				<div selected><img src="images/icons/hierarchy.svg" alt=""/><a href="#panel-hierarchy">Hierarchy</a></div>
+				<div><a href="#panel-project">Project</a></div>
+			</div>
+
+			<div id="panel-hierarchy" class="panel">
+				<div id="toolbar-hierarchy" xgui-type="toolbar">
+					<nav id="testme"></nav>
+					<div xgui-type="push-button-group"></div>
+					<div xgui-type="toggle-button-group"></div>
+				</div>
+				<div id="hierarchy-tree" xgui-type="tree">
+					
+					<div xgui-type="tree-node">
+						<span class="expander-symbol"></span>
+						<div class="node-content">
+							<div xgui-type="tree-value">Root</div>
+
+							<div xgui-type="tree-node">
+								<span class="expander-symbol"></span>
+								<div class="node-content">
+									<div xgui-type="tree-value">Bone 1</div>
+
+									<div xgui-type="tree-node">
+										<span class="expander-symbol"></span>
+										<div class="node-content">
+											<div xgui-type="tree-value">Bone 2</div>
+										</div>
+									</div>	
+
+								</div>
+							</div>	
+							
+							<div id="testbone3" xgui-type="tree-node">
+								<span class="expander-symbol"></span>
+								<div class="node-content">
+									<div xgui-type="tree-value">Bone 3</div>
+								</div>
+							</div>
+
+						</div>
+					</div>	
+					
+					
+				</div>
+			</div>
+
+			<div id="panel-project" class="panel"></div>
+		</div>
+
+		<!-- ********************************* -->
+		<!-- ** Right		 				** -->
+		<!-- ********************************* -->
+		
+		<div id="container_right" resizer="left">
+			<div xgui-type="tabs">
+				<div selected><img src="images/icons/info.svg" alt=""/><a href="#panel-properties">Properties</a></div>
+				<div><a href="#panel-22">Tab 2</a></div>
+			</div>
+			
+			<div id="panel-properties">
+				<div id="toolbar-properties" xgui-type="toolbar">
+					<div xgui-type="push-button-group">
+						<div id="properties-expand" xgui-type="toolbar-button"><img src="images/icons/expand.svg" alt=""/></div>
+						<div id="properties-collapse" xgui-type="toolbar-button"><img src="images/icons/collapse.svg" alt=""/></div>
+					</div>
+					<div xgui-type="toggle-button-group">
+						<div selected id="properties-show-friendlynames" xgui-type="toolbar-button"><img src="images/icons/brackets.svg" alt=""/></div>
+						<div id="properties-showall" xgui-type="toolbar-button"><img src="images/icons/eye.svg" alt=""/></div>
+					</div>
+				</div>
+
+				<div id="properties"></div>
+
+				<div style="text-align: center;">
+					<hr/>
+					<div xgui-type="push-button-group">
+						<div id="add-component" class="xgui-button" xgui-type="toolbar-button">Add Component</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="panel-22" class="panel">Panel 2</div>
+		</div>
+		
+		<!-- ********************************* -->
+		<!-- ** Center		 				** -->
+		<!-- ********************************* -->
+
+		<div id="container_center">
+
+			<div xgui-type="tabs">
+				<div selected><img src="images/icons/grid.svg" alt=""/><a href="#panel-view">View</a></div>
+				<div><img src="images/icons/game.svg" alt=""/><a href="#panel-game">Game</a></div>
+				<div><img src="images/icons/testing.svg" alt=""/><a href="#panel-unittests">Unit Tests</a></div>
+				<div><img src="images/icons/testing.svg" alt=""/><a href="#panel-manage-ledger">Manage Ledger</a></div>
+			</div>
+
+			<div id="panel-view">
+				<div xgui-type="toolbar">
+					<div xgui-type="radio-button-group">
+						<div id="view-pan" selected xgui-type="toolbar-button"><img src="images/icons/pan.svg" alt=""/></div>
+						<div id="view-rotate" xgui-type="toolbar-button"><img src="images/icons/rotate.svg" alt=""/></div>
+						<div id="view-zoom" xgui-type="toolbar-button"><img src="images/icons/zoom.svg" alt=""/></div>
+					</div>
+				</div>
+				<canvas id="mycanvas" width="400" height="300"></canvas>
+			</div>
+
+			<div id="panel-game" class="panel">The Game</div>
+
+			<div id="panel-unittests" class="panel"></div>
+
+			<div id="panel-manage-ledger" class="panel"></div>
+		</div>
+	</div>
+
+	<!-- ********************************* -->
+	<!-- ** Dialog Components			** -->
+	<!-- ********************************* -->
+
+	<div class="modal">
+		<div id="dialog-add-component" xgui-type="dialog" style="display:none;">
+			<div xgui-type="dialog-controls">
+				<div xgui-type="push-button-group">
+					<div xgui-type="toolbar-button" xgui-action="close-dialog"><img src="images/icons/close.svg" alt=""/></div>
+				</div>
+			</div>
+			<div xgui-type="tabs">
+				<div selected><img src="images/icons/gear.svg" alt=""/><a href="#panel-add-component">Add Component</a></div>
+			</div>
+			<div id="panel-add-component" class="panel">
+				<div id="add-component-listview" xgui-type="list-view" class="view-list"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ********************************* -->
+	<!-- ** Dialog Setup 				** -->
+	<!-- ********************************* -->
+
+	<div id="dialog-editor-setup" xgui-type="dialog" style="display:none;">
+		<div xgui-type="dialog-controls">
+			<div xgui-type="push-button-group">
+				<div xgui-type="toolbar-button" xgui-action="close-dialog"><img src="images/icons/close.svg" alt=""/></div>
+			</div>
+		</div>
+		<div xgui-type="tabs">
+			<div selected><img src="images/icons/gear.svg" alt=""/><a href="#panel-settings">Settings</a></div>
+		</div>
+		<div id="panel-settings" class="panel">Settings</div>
+	</div>
+
+	<!-- ********************************* -->
+	<!-- ** Dialog Save 				** -->
+	<!-- ********************************* -->
+
+	<div id="dialog-save" xgui-type="dialog" style="display:none;">
+		<div xgui-type="tabs">
+			<div selected><img src="images/icons/disk.svg" alt=""/><a href="#panel-save-info">Saving</a></div>
+		</div>
+		<div id="panel-save-info" class="panel">
+			<textarea id="save-text" readonly></textarea>
+
+			<div xgui-type="push-button-group">
+				<div id="save-close-button" class="xgui-button" xgui-type="toolbar-button" xgui-action="close-dialog">Close</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- general dialog -->
+	<div class="modal">
+		<div id="dialog-info" xgui-type="dialog" style="display:none;">
+			<div xgui-type="tabs">
+				<div selected><img id="dialog-header-icon" src="images/icons/info.svg" alt=""/><a id="dialog-header" href="#panel-dialog-info">Info</a></div>
+			</div>
+			<div id="panel-dialog-info" class="panel">
+				<textarea id="dialog-text" readonly></textarea>
+
+				<div xgui-type="push-button-group">
+					<div id="dialog-close-button" class="xgui-button" xgui-type="toolbar-button" xgui-action="close-dialog">Close</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body></html>

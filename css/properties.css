@@ -1,0 +1,179 @@
+.property-header{
+	background-color: var(--header-color);
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.property-expander{
+	display: inline-block;
+	color: var(--expander-color);
+	cursor: pointer;
+	width: 12px;
+}
+
+/*
+	header
+*/
+
+.property-header{
+	display: flex;
+	border-top: 1px solid var(--background-color);
+	border-bottom: 1px solid #303030;
+}
+
+.property-icon{
+	width: 16px;
+}
+
+.property-enable{
+	width: 16px;
+}
+
+.property-title{
+	color: var(--text-color);
+}
+
+.property-kebab-menu{
+	flex-grow: 1;
+	text-align: right;
+}
+
+/*
+	other
+*/
+
+.property-grid-container{
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	font-size: var(--text-size);
+}
+
+.property-col-left{
+	padding-left: 24px;
+	padding-top: 6px;
+	padding-bottom: 0px;
+}
+
+.property-col-right{
+	padding-top: 3px;
+	padding-bottom: 0px;
+	padding-right: 3px;
+}
+
+.property-container{
+	padding-bottom: 4px;
+}
+
+.property-container input{
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.property-container input[type=checkbox]{
+	box-sizing: border-box;
+	width: auto;
+
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+	background-color: var(--background-input-color);
+
+	/* Not removed via appearance */
+	margin: 0;
+	
+	font: inherit;
+	color: currentColor;
+	/*
+	width: 1.15em;
+	height: 1.15em;
+	*/
+	width: 1.3em;
+	height: 1.3em;
+
+	border: 1px solid #333333;
+	border-top: 1px solid var(--border-input-dark-color);
+	border-radius: 4px;
+	/*transform: translateY(-0.075em);*/
+
+	display: grid;
+  	place-content: center;
+}
+
+.property-container input[type=checkbox]::before{
+	content: "";
+	border-radius: 2px;
+	width: 0.65em;
+	height: 0.65em;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--text-color);
+
+	transform-origin: bottom left;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.property-container input[type=checkbox]:checked::before{
+	transform: scale(1);
+}
+
+.property-container input[type=checkbox]:disabled::before{
+	box-shadow: inset 1em 1em var(--text-readonly);
+}
+
+.property-container input[type=checkbox]:disabled{
+	background-color:  var(--border-input-dark-color);
+}
+
+/* FIXME: this should only be valid for properties */
+.grid-col3 input{
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.property-col-right select{
+	width: 100%;
+	background-color: var(--background-input-color);
+	border: 1px solid var(--border-input-dark-color);
+	color: var(--text-color);
+	border-radius: 4px;
+}
+
+#container_right{
+	overflow-y: scroll;
+}
+
+#toolbar-properties{
+	display: flex;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+#toolbar-properties > div{
+	box-sizing: border-box;
+	flex: 50%;
+}
+
+#toolbar-properties > div:nth-child(2){
+	box-sizing: border-box;
+	justify-content: right; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.property-col-right input[type=number]{
+	text-align: right;
+	outline: none;
+}
+
+/* BUG: this is defined in the common.css but for some reason the input type number do not show the blue outline, by adding this they do */
+.property-col-right input:focus{
+	outline: 1px solid var(--focus-color);
+}

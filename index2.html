@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>xGui Demo</title>
+
+	<!-- xgui css -->
+	<link rel="stylesheet" href="css/listview.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/dialog.css" />
+	<link rel="stylesheet" href="css/menu.css" />
+	<link rel="stylesheet" href="css/hierarchy.css" />
+	<link rel="stylesheet" href="css/view.css" />
+	<link rel="stylesheet" href="css/main_toolbar.css" />
+	<link rel="stylesheet" href="css/toolbar.css" />
+	<link rel="stylesheet" href="css/resizers.css" />
+	<link rel="stylesheet" href="css/properties.css" />
+	<link rel="stylesheet" href="css/tree.css" />
+	<link rel="stylesheet" href="css/tabs.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+
+	<!-- these are not directly xgui css stuff -->
+	<link rel="stylesheet" href="css/editor.css" />
+	<link rel="stylesheet" href="css/projects.css" />
+	<link rel="stylesheet" href="css/unittests.css" />
+	<link rel="stylesheet" href="css/scenes.css" />
+	<link rel="stylesheet" href="css/console.css" />
+
+	<link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "./node_modules/three/build/three.module.js",
+				"jquery": "./node_modules/jquery/dist/jquery.min.js"
+			}
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="module" src="dist/app.js" defer></script>
+</head>
+	<body>
+		<div id="container">
+
+			<div id="container_left" resizer="right">
+
+				<div xgui-type="tabs">
+					<div selected><img src="images/icons/hierarchy.svg" alt=""/><a href="#panel-hierarchy">Hierarchy</a></div>
+				</div>
+	
+				<div id="panel-hierarchy" class="panel">
+					<div id="hierarchy-tree" xgui-type="tree">
+						
+						<!--
+						<div id="test" xgui-type="tree-node">
+							<span class="expander-symbol"></span>
+							<div class="node-content">
+								<div xgui-type="tree-value">Demo</div>
+							</div>
+						</div>
+						-->
+
+						<!--
+						<div xgui-type="tree-node">
+							<span class="expander-symbol"></span>
+							<div class="node-content">
+								<div xgui-type="tree-value">Root</div>
+	
+								<div xgui-type="tree-node">
+									<span class="expander-symbol"></span>
+									<div class="node-content">
+										<div xgui-type="tree-value">Bone 1</div>
+	
+										<div xgui-type="tree-node">
+											<span class="expander-symbol"></span>
+											<div class="node-content">
+												<div xgui-type="tree-value">Bone 2</div>
+											</div>
+										</div>	
+	
+									</div>
+								</div>	
+								
+								<div id="testbone3" xgui-type="tree-node">
+									<span class="expander-symbol"></span>
+									<div class="node-content">
+										<div xgui-type="tree-value">Bone 3</div>
+									</div>
+								</div>
+	
+							</div>
+						</div>	
+						-->
+						
+					</div>
+				</div>
+	
+			</div>
+
+		</div>
+
+
+	</body>
+</html>

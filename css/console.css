@@ -1,0 +1,61 @@
+/* #test-toolbar{
+	height: 30px;
+	min-height: 30px;
+} */
+
+#container-flex-bottom{
+	height: 100%;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+}
+
+#panel-console{
+	flex-grow: 1;
+    overflow-y: auto;
+	box-sizing: border-box;
+}
+
+#panel-console-container{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+#console-output{
+	padding: 4px;
+	flex-grow: 1;
+	flex-basis:0;
+	overflow-y: auto;
+	box-sizing: border-box;
+	/* background-color: blue; */
+}
+
+#console-input{
+	/*background-color: yellow;*/
+	background-color: var(--forground-color);
+	padding: 4px;
+	box-sizing: border-box;
+
+	height: 30px; 
+}
+
+#console-input input{
+	height: 22px;
+	width: 100%;
+}
+
+#console-path{
+	display: inlne-block;
+	padding: 4px;
+	white-space: nowrap;
+}
+
+#console-input-symbol{
+	padding-top: 4px;
+}
+
+.dir-info{
+	margin-left: 10px;
+}

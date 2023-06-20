@@ -1,0 +1,8 @@
+#mycanvas{
+	/* background-color: blue; */
+	/*cursor: url("../../images/icons/pan.png"), auto;*/
+	width: 100%;
+	height: 100%;
+	box-sizing:border-box; 
+	background-color: purple;
+}

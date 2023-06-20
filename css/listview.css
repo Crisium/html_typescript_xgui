@@ -1,0 +1,67 @@
+div[xgui-type=list-view]{
+	/* background-color:chocolate;  */
+	padding: 4px;
+	user-select: none;
+}
+
+
+.view-list{
+	display: block;
+	box-sizing: border-box;
+}
+
+.view-grid{
+	display: grid;
+	box-sizing: border-box;
+	grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+	grid-gap: 10px;
+}
+
+.view-grid-large{
+	display: grid;
+	box-sizing: border-box;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	grid-gap: 10px;
+}
+
+.view-list > div{
+	box-sizing: border-box;
+	cursor: pointer;
+	border: 1px solid var(--background-color);
+}
+
+.view-grid > div{
+	box-sizing: border-box;
+	background-color: var(--background-light-color);
+	color: var(--text-color);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.view-grid-large > div {
+	box-sizing: border-box;
+	background-color: var(--background-light-color);
+	color: var(--text-color);
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+
+.view-list > div:hover{
+	border: 1px solid var(--focus-color);
+}
+
+.view-grid > div:hover {
+	border: 1px solid var(--focus-color);
+	background-color: var(--forground-color);
+}
+
+.view-grid-large > div:hover {
+	border: 1px solid var(--focus-color);
+	background-color: var(--forground-color);
+}
+
+.view-list > div[selected=selected]{
+	background-color: var(--focus-color);
+}

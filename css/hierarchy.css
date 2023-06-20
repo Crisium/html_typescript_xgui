@@ -1,0 +1,7 @@
+#hierarchy-addobject img:nth-child(1){
+	padding-right: 0px;
+}
+
+#hierarchy-addobject img:nth-child(2){
+	padding-left: 0px;
+}

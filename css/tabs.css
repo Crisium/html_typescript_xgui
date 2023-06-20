@@ -1,0 +1,62 @@
+div[xgui-type=tabs]{
+	display: flex;
+	box-sizing: border-box;
+	padding: 0;
+    margin: 0;
+	border: 0;
+	background-color: var(--background-color);
+}
+
+div[xgui-type=tabs] div{
+	display: inline-block;
+	box-sizing: border-box;
+	background-color:var(--background-color);
+	padding-left: 7px;
+	padding-right: 7px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom: solid 1px var(--background-dark-color);
+}
+
+div[xgui-type=tabs] a{
+	text-decoration: none;
+	color:  var(--text-color);
+	font-size: var(--text-size);
+}
+
+div[xgui-type=tabs] div:first-child{
+	border-radius: 2px  0px 0px 0px; 	/* 2 values: top-left, bottom-right*/  
+										/* 4 values: top-left, rop-right, bottom-right, bottom-left */
+}
+
+div[xgui-type=tabs] div:last-child{
+	border-radius: 0px  2px 0px 0px;
+}
+
+div[xgui-type=tabs]:after{
+	content: "";
+	border-bottom: solid 1px var(--background-dark-color);
+	flex: 1;
+}
+
+div[xgui-type=tabs] div[selected]{
+	background-color:var(--forground-color);
+	border-left: solid 1px var(--background-dark-color);
+	border-right: solid 1px var(--background-dark-color);
+	border-bottom: 0;
+
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+div[xgui-type=tabs] img{
+	text-decoration: none;
+	color: var(--text-color);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: text-top;
+	width: 14px;
+	height: 14px;
+	padding-right: 4px;
+}
