@@ -19,6 +19,8 @@
 	<link rel="stylesheet" href="css/tree.css" />
 	<link rel="stylesheet" href="css/tabs.css" />
 	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	<link rel="stylesheet" href="css/icons.css" />
 
 	<!-- these are not directly xgui css stuff -->
 	<link rel="stylesheet" href="css/editor.css" />
@@ -76,15 +78,15 @@
 
 				<div xgui-type="toolbar">
 					<div xgui-type="radio-button-group">
-						<div id="media-play" xgui-type="toolbar-button"><img src="images/icons/play.svg" alt=""/></div>
-						<div id="media-stop" selected xgui-type="toolbar-button"><img src="images/icons/stop3.svg" alt=""/></div>
-						<div id="media-pause" xgui-type="toolbar-button"><img src="images/icons/pause2.svg" alt=""/></div>
+						<button id="media-play" xgui-type="button" class="icon-play icon-toolbar"></button>
+						<button id="media-stop" selected xgui-type="button" class="icon-stop icon-toolbar"></button>
+						<button id="media-pause" xgui-type="button" class="icon-pause icon-toolbar"></button>
 					</div>
 				</div>
 
 				<div xgui-type="toolbar">
 					<div xgui-type="push-button-group">
-						<div id="editor-settings" xgui-type="toolbar-button"><img src="images/icons/gear.svg" alt=""/></div>
+						<div id="editor-settings" xgui-type="toolbar-button" class="icon-gear icon-toolbar"></div>
 					</div>
 				</div>
 	
@@ -209,12 +211,15 @@
 			</div>
 
 			<div id="panel-hierarchy" class="panel">
+
 				<div id="toolbar-hierarchy" xgui-type="toolbar">
 					<nav id="testme"></nav>
 					<div xgui-type="push-button-group"></div>
 					<div xgui-type="toggle-button-group"></div>
 				</div>
 				<div id="hierarchy-tree" xgui-type="tree">
+
+					<button class="icon-info"></button>
 					
 					<div xgui-type="tree-node">
 						<span class="expander-symbol"></span>

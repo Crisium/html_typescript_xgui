@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Demo Resizer</title>
+
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/view.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	<link rel="stylesheet" href="css/icons.css" />
+	<!-- <link rel="stylesheet" href="css/layout.css" /> -->
+	<link rel="stylesheet" href="css/resizers.css" />
+	
+	<link rel="stylesheet" href="css/editor.css" />
+
+	<link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+	<script type="importmap">
+		{
+			"imports": {
+				"jquery": "./node_modules/jquery/dist/jquery.min.js"
+			}
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="module" defer>
+		import xGuiResizer from "./dist/xgui_resizer.js";
+
+		xGuiResizer.instance();
+	</script>
+
+	<style>
+		#container{
+			display: flex;
+			width: 100%;
+			height: 100%;
+		}
+		#container_left{
+			flex: 0 0 auto;
+			background-color: rgba(228, 228, 228, 0.745);
+			width: 10%;
+			height: 100%;
+		}
+		#container_center{
+			flex: 1 1 auto;
+			background-color:rgb(244, 244, 244);
+			height: 100%;
+		}
+		#container_right{
+			background-color: rgba(228, 228, 228, 0.745);
+			flex: 0 0 auto;
+			width: 10%;
+			height: 100%;
+		}
+	</style>
+</head>
+	<body>
+		<h1>Resizer</h1>
+		<div id="container">
+
+			<div id="container_left" resizer="right"></div>
+
+			<div id="container_center"></div>
+
+			<div id="container_right" resizer="left"></div>
+
+		</div>
+
+	</body>
+</html>

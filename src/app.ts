@@ -18,16 +18,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		(<any>event.currentTarget).select();
 	});
 
-	new xGui;
 	new xGuiDialog;
-	new xGuiTabs;
-	//new xGuiTree({ selector: $(`div[xgui-type=tree]`)});
-	xGuiTree.instance().process({ selector: $(`div[xgui-type=tree]`)});
-	new xGuiResizer;
+	xGuiTabs.instance();
+	xGuiTree.instance();
+	xGuiResizer.instance();
 	new xGuiToolbar;
-	new xGuiRadioButtonGroup;
-	new xGuiToggleButtonGroup({ selector: $(`div[xgui-type=toggle-button-group] div[xgui-type=toolbar-button]`) });
-	new xGuiPushButtonGroup({ selector: $(`div[xgui-type=push-button-group] div[xgui-type=toolbar-button]`) });
+	xGuiRadioButtonGroup.instance();
+	xGuiToggleButtonGroup.instance();
+	xGuiPushButtonGroup.instance();
 	//new xGuiListView;
 
 

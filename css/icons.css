@@ -1,0 +1,32 @@
+.icon-toolbar{
+	background-size: 12px 12px;
+	background-position: 4px 4px;
+	width: 20px;
+	height: 20px;
+}
+
+.icon-info{
+	background-image: url("images/icons/info.svg");
+	background-repeat: no-repeat;	
+}
+
+.icon-play{
+	background-image: url("images/icons/play.svg");
+	background-repeat: no-repeat;	
+}
+
+.icon-stop{
+	background-image: url("images/icons/stop3.svg");
+	background-repeat: no-repeat;	
+}
+
+.icon-pause{
+	background-image: url("images/icons/pause2.svg");
+	background-repeat: no-repeat;
+}
+
+.icon-gear{
+	background-image: url("images/icons/gear.svg");
+	background-repeat: no-repeat;
+}
+

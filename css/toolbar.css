@@ -31,17 +31,9 @@ div[xgui-type=radio-button-group]{
 	display: flex;
 }
 
-div[xgui-type=radio-button-group] div[selected]{
-	background-color: var(--button-selected);
-}
 
 div[xgui-type=toggle-button-group]{
 	display: flex;
-}
-
-
-div[xgui-type=toggle-button-group] div[selected]{
-	background-color: var(--button-selected);
 }
 
 

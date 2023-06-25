@@ -1,7 +1,20 @@
 export default class xGuiTabs{
 
 
-	constructor(){
+	// singleton
+	private static inst: xGuiTabs;
+	static instance() : xGuiTabs{
+		if (!xGuiTabs.inst){
+			xGuiTabs.inst = new xGuiTabs;
+		}
+		return xGuiTabs.inst;
+	}
+
+	private constructor(){
+		this.process();
+	}
+
+	process(){
 
 		// stops the "a" element doing website linking
 		$("div[xgui-type=tabs] a").on("click", (event)=>{

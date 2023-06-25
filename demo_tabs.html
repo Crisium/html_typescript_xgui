@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Demo Tabs</title>
+
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/view.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	<link rel="stylesheet" href="css/icons.css" />
+		<link rel="stylesheet" href="css/tabs.css" />
+	
+	<link rel="stylesheet" href="css/editor.css" />
+
+	<link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+	<script type="importmap">
+		{
+			"imports": {
+				"jquery": "./node_modules/jquery/dist/jquery.min.js"
+			}
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="module" defer>
+		import xGuiTabs from "./dist/xgui_tabs.js";
+
+		xGuiTabs.instance();
+	</script>
+
+	<style>
+		#container{
+			display: flex;
+			width: 100%;
+			height: 100%;
+		}
+		#container_left{
+			flex: 0 0 auto;
+			background-color: rgba(228, 228, 228, 0.745);
+			width: 10%;
+			height: 100%;
+		}
+		#container_center{
+			flex: 1 1 auto;
+			background-color:rgb(244, 244, 244);
+			height: 100%;
+		}
+		#container_right{
+			background-color: rgba(228, 228, 228, 0.745);
+			flex: 0 0 auto;
+			width: 10%;
+			height: 100%;
+		}
+	</style>
+</head>
+	<body>
+		<h1>Tabs</h1>
+		<div xgui-type="tabs">
+			<div selected><img src="images/icons/hierarchy.svg" alt=""/><a href="#panel-1">Tab 1</a></div>
+			<div><a href="#panel-2">Tab 2</a></div>
+			<div><a href="#panel-3">Tab 3</a></div>
+		</div>
+
+		<div id="panel-1" class="panel">
+			Panel 1
+		</div>
+
+		<div id="panel-2" class="panel">
+			Panel 2
+		</div>
+
+		<div id="panel-3" class="panel">
+			Panel 3
+		</div>
+	</body>
+</html>

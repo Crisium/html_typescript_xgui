@@ -14,12 +14,15 @@ export default class xGuiTree{
 
 	// singleton
 	private static inst: xGuiTree;
-	private constructor(){}
 	static instance() : xGuiTree{
 		if (!xGuiTree.inst){
 			xGuiTree.inst = new xGuiTree;
 		}
 		return xGuiTree.inst;
+	}
+
+	private constructor(){
+		this.process({ selector: $(`div[xgui-type=tree]`)});
 	}
 
 	addChild( params: IGuiTreeAddChild ){
@@ -106,9 +109,6 @@ export default class xGuiTree{
 			let node_content = $(el).siblings(`.node-content`).first();
 			let child_tree_node = node_content.find(`div[xgui-type=tree-node]`).first();
 
-			console.log("child_tree_node", child_tree_node);
-			console.log("node-content", node_content);
-
 			if (child_tree_node.length==0){
 				return;
 			}
@@ -124,7 +124,6 @@ export default class xGuiTree{
 		expander.off('click');	// remove any previous click event on this expander
 		expander.on("click", (event)=>{
 			let target = $(event.currentTarget);
-			console.log("target", target );
 			target.toggleClass("expander-symbol-down");
 			target.toggleClass("expander-symbol-right");
 			target.text( target.text()==String.fromCharCode(9660)?String.fromCharCode(9654):String.fromCharCode(9660) );
