@@ -9,6 +9,7 @@ import xGuiRadioButtonGroup from "./xgui_radio_button_group.js";
 import xGuiToggleButtonGroup from "./xgui_toggle_button_group.js";
 import xGuiPushButtonGroup from "./xgui_push_button_group.js";
 import xGuiTree from "./xgui_tree.js";
+import xGuiListView from "./xgui_listview.js";
 
 
 document.addEventListener("DOMContentLoaded", (event) => { 
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		(<any>event.currentTarget).select();
 	});
 
-	new xGuiDialog;
+	xGuiDialog.instance();
 	xGuiTabs.instance();
 	xGuiTree.instance();
 	xGuiResizer.instance();
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	xGuiRadioButtonGroup.instance();
 	xGuiToggleButtonGroup.instance();
 	xGuiPushButtonGroup.instance();
-	//new xGuiListView;
+	xGuiListView.instance();
 
 
 	xGuiTree.instance().addChild({

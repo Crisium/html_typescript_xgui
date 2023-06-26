@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Demo Dialog</title>
+
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/view.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	<link rel="stylesheet" href="css/icons.css" />
+	<link rel="stylesheet" href="css/dialog.css" />
+	<link rel="stylesheet" href="css/toolbar.css" />
+	
+	<link rel="stylesheet" href="css/editor.css" />
+	<link rel="stylesheet" href="css/tabs.css" />
+
+	<link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+	<script type="importmap">
+		{
+			"imports": {
+				"jquery": "./node_modules/jquery/dist/jquery.min.js"
+			}
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="module" defer>
+		import xGuiDialog from "./dist/xgui_dialog.js";
+
+		xGuiDialog.instance();
+
+		$(".modal").show();
+	</script>
+
+	<style>
+		.modal{
+			width: 200px;
+			height: 100px;
+		}
+	</style>
+</head>
+	<body>
+		<h1>Dialog</h1>
+		<div class="modal">
+			<div id="dialog-demo" xgui-type="dialog" style="display:block;">
+				<div xgui-type="dialog-controls">
+					<div xgui-type="push-button-group">
+						<div xgui-type="toolbar-button" xgui-action="close-dialog"><img src="images/icons/close.svg" alt=""/></div>
+					</div>
+				</div>
+
+				<div xgui-type="tabs">
+					<div selected><img src="images/icons/gear.svg" alt=""/><a href="#panel-add-component">Hello World</a></div>
+				</div>
+				<div id="panel-add-component" class="panel">
+					Content Area
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>

@@ -17,10 +17,30 @@ export default class xGuiListView{
 
 	private _map: Map<string, xGuiItem> = new Map<string, xGuiItem>();
 
+
+	// singleton
+	private static inst: xGuiListView;
+	static instance() : xGuiListView{
+		if (!xGuiListView.inst){
+			xGuiListView.inst = new xGuiListView;
+		}
+		return xGuiListView.inst;
+	}
+
+	private constructor(){
+		this.process();
+	}
+
+	/*
 	constructor( params: IXGuiListViewParams ){
 		this._target = params.target;
 		this._on_select = params.on_select;
 		this._target.empty();
+	}
+	*/
+
+	process(){
+	
 	}
 
 	addItem(item:xGuiItem){

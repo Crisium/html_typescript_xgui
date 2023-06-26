@@ -41,9 +41,6 @@ div[xgui-type=push-button-group]{
 	display: inline-flex;
 }
 
-div[xgui-type=push-button-group] div[selected]{
-	background-color: var(--button-selected);
-}
 
 div[xgui-type=toolbar] input{
 	vertical-align: text-bottom;
