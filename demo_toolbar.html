@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Demo Listview</title>
+	<title>Demo Toolbar</title>
 
 	<link rel="stylesheet" href="css/common.css" />
 	<link rel="stylesheet" href="css/view.css" />
@@ -33,37 +33,27 @@
 	</script>
 
 	<style>
-		.modal{
-			width: 200px;
-			height: 100px;
-		}
 	</style>
 </head>
 	<body>
-		<h1>Listview</h1>
+		<h1>Toolbar</h1>
 
-		<h2>List</h2>
-		<div id="test" xgui-type="list-view" class="view-list">
-			<div>Item 1</div>
-			<div>Item 2</div>
-			<div>Item 3</div>
-			<div>Item 4</div>
-		</div>
-	
-		<h2>Grid</h2>
-		<div id="test" xgui-type="list-view" class="view-grid">
-			<div>Item 1</div>
-			<div>Item 2</div>
-			<div>Item 3</div>
-			<div>Item 4</div>
-		</div>
-
-		<h2>Grid Large</h2>
-		<div id="test" xgui-type="list-view" class="view-grid-large">
-			<div>Item 1</div>
-			<div>Item 2</div>
-			<div>Item 3</div>
-			<div>Item 4</div>
+		<div xgui-type="toolbar">
+			<div xgui-type="push-button-group">
+				<button xgui-type="button" class="icon-play icon-toolbar"></button>
+				<button xgui-type="button" class="icon-stop icon-toolbar"></button>
+				<button xgui-type="button" class="icon-pause icon-toolbar"></button>
+			</div>
+			<div xgui-type="push-button-group">
+				<button xgui-type="button" class="icon-play icon-toolbar"></button>
+				<button xgui-type="button" class="icon-stop icon-toolbar"></button>
+				<button xgui-type="button" class="icon-pause icon-toolbar"></button>
+			</div>
+			<div xgui-type="push-button-group">
+				<button xgui-type="button" class="icon-play icon-toolbar"></button>
+				<button xgui-type="button" class="icon-stop icon-toolbar"></button>
+				<button xgui-type="button" class="icon-pause icon-toolbar"></button>
+			</div>
 		</div>
 	</body>
 </html>

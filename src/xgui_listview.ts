@@ -40,7 +40,10 @@ export default class xGuiListView{
 	*/
 
 	process(){
-	
+		$(`div[xgui-type==list-view]`).each( (idx, el)=>{
+
+			
+		});
 	}
 
 	addItem(item:xGuiItem){

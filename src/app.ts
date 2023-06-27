@@ -23,12 +23,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	xGuiTabs.instance();
 	xGuiTree.instance();
 	xGuiResizer.instance();
-	new xGuiToolbar;
 	xGuiRadioButtonGroup.instance();
 	xGuiToggleButtonGroup.instance();
 	xGuiPushButtonGroup.instance();
 	xGuiListView.instance();
-
+	xGuiToolbar.instance();
 
 	xGuiTree.instance().addChild({
 		id: "id_1",
